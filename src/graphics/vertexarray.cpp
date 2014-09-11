@@ -1,11 +1,11 @@
 #include "vertexarray.h"
 
-VertexArray::VertexArray(GLfloat *vertices, GLuint *indices, GLsizei count) {
-    this->count = count;
-    vao = compile(vertices, indices, count);
+VertexArray::VertexArray(GLfloat *vertices, GLuint *indices, GLsizei vcount, GLsizei icount) {
+    this->count = icount;
+    vao = compile(vertices, indices, vcount, icount);
 }
 
-GLuint VertexArray::compile(GLfloat *vertices, GLuint *indices, GLsizei count) {
+GLuint VertexArray::compile(GLfloat *vertices, GLuint *indices, GLsizei vcount, GLsizei icount) {
     GLuint vao, tbo, vbo;
     
     glGenVertexArrays(1, &vao);
@@ -13,7 +13,7 @@ GLuint VertexArray::compile(GLfloat *vertices, GLuint *indices, GLsizei count) {
     
     glGenBuffers(1, &vbo);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glBufferData(GL_ARRAY_BUFFER, 4 * 3 * sizeof(GLfloat), vertices, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, vcount * sizeof(GLfloat), vertices, GL_STATIC_DRAW);
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -27,7 +27,7 @@ GLuint VertexArray::compile(GLfloat *vertices, GLuint *indices, GLsizei count) {
     
     glGenBuffers(1, &tbo);
     glBindBuffer(GL_ARRAY_BUFFER, tbo);
-    glBufferData(GL_ARRAY_BUFFER, 2 * 4 * sizeof(GLfloat), tcs, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, icount * sizeof(GLfloat), tcs, GL_STATIC_DRAW);
     glEnableVertexAttribArray(2);
     glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, 0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -45,7 +45,7 @@ GLuint VertexArray::compile(GLfloat *vertices, GLuint *indices, GLsizei count) {
 void VertexArray::render() {
     glBindVertexArray(vao);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+    glDrawElements(GL_TRIANGLES, count, GL_UNSIGNED_INT, 0);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
 }

@@ -28,6 +28,8 @@ void Screen::initGL() {
     
     glEnable(GL_DEPTH_TEST);
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+    
+    Shader::LOAD();
 }
 
 void Screen::clear() {

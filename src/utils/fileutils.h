@@ -5,6 +5,8 @@
 #include <vector>
 #include <string>
 
+#define Test
+
 class FileUtils {
 public:
     static std::string read_file(const char *filename) {
@@ -29,3 +31,9 @@ public:
         return result;
     }
 };
+
+#ifndef Test
+void test() {
+    
+}
+#endif

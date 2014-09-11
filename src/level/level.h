@@ -4,11 +4,12 @@
 #include "../utils/glm.h"
 #include "../graphics/vertexarray.h"
 #include "../graphics/shader.h"
+#include "block.h"
 
 class Level {
 private:
     VertexArray *floor;
-    Shader *shader;
+    Block *block;
     glm::mat4 floor_pos, floor_rot;
 public:
     Level();

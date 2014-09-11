@@ -13,27 +13,31 @@ Level::Level() {
         2, 3, 0
     };
     
-    floor = new VertexArray(vertices, indices, 6);
-    shader = new Shader("shaders/shader.vert", "shaders/shader.frag");
-    shader->enable();
-    shader->set_uniform_matrix("pr_matrix", glm::perspective(65.0f, 16.0f / 9.0f, 0.1f, 1000.0f));
-    shader->set_uniform_matrix("vw_matrix", glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -500.0f)));
-    shader->disable();
+    floor = new VertexArray(vertices, indices, 12, 6);
     
-    floor_pos = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 0.0f, -5.0f));
+    floor_pos = glm::translate(glm::mat4(1.0f), glm::vec3(50.0f, 50.0f, -500.0f));
+    block = new Block(0);
 }
 
-float angle;
+float angle = 0.0f;
 
 void Level::update() {
     angle++;
 }
 
+glm::mat4 rot;
+
 void Level::render() {
-    shader->enable();
-    floor_rot = glm::rotate(glm::mat4(1.0f), angle, glm::vec3(1.0f, 0.0f, 0.0f));
-    shader->set_uniform_matrix("ml_matrix", floor_rot * floor_pos);
-    floor->render();
-    shader->disable();
+    Shader::BLOCK->enable();
+    block->update();
+    rot = glm::rotate(glm::mat4(1.0f), angle, glm::vec3(0.0f, 1.0f, 0.0f));
+    rot *= glm::rotate(glm::mat4(1.0f), angle, glm::vec3(1.0f, 0.0f, 0.0f));
+    Shader::BLOCK->set_uniform_matrix("vw_matrix", floor_pos * rot);
+    for (int y = 0; y < 8; y++) {
+        for (int x = 0; x < 8; x++) {
+            block->render(glm::vec3(x * 46.0f, y * 46.0f, x * 16.0f + y * 16.0f));
+        }
+    }
+    Shader::BLOCK->disable();
 }
 

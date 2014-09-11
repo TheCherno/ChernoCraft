@@ -9,7 +9,7 @@
 
 class Shader {
 public:
-    // Static shaders go here
+    static Shader *BLOCK;
 private:
     GLuint shader;
     GLuint load(const char *vs, const char *fs);

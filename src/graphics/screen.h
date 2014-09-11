@@ -5,6 +5,8 @@
 #include <SDL2/SDL.h>
 #include <OpenGL/gl3.h>
 
+#include "shader.h"
+
 class Screen {
 private:
     const char *title;

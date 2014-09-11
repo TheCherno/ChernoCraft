@@ -1,5 +1,7 @@
 #include "shader.h"
 
+Shader* Shader::BLOCK;
+
 Shader::Shader(const char *vertex, const char *fragment) {
     std::string vsrc = FileUtils::read_file(vertex);
     std::string fsrc = FileUtils::read_file(fragment);
@@ -15,7 +17,11 @@ Shader::Shader(std::string vertex_source, std::string fragment_source, std::stri
 }
 
 void Shader::LOAD() {
-    // Load static shaders here
+    BLOCK = new Shader("shaders/shader.vert", "shaders/shader.frag");
+    BLOCK->enable();
+    BLOCK->set_uniform_matrix("pr_matrix", glm::perspective(65.0f, 16.0f / 9.0f, 0.1f, 1000.0f));
+    BLOCK->set_uniform_matrix("vw_matrix", glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -500.0f)));
+    BLOCK->disable();
 }
 
 GLuint Shader::load(const char *vs, const char *fs) {

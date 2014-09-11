@@ -1,14 +1,18 @@
-//
-//  block.h
-//  ChernoCraft
-//
-//  Created by Yan Chernikov on 11/09/2014.
-//  Copyright (c) 2014 Yan Chernikov. All rights reserved.
-//
+#pragma once
 
-#ifndef __ChernoCraft__block__
-#define __ChernoCraft__block__
+#include "../graphics/vertexarray.h"
+#include "../utils/glm.h"
+#include "../graphics/texture.h"
+#include "../graphics/shader.h"
 
-#include <stdio.h>
-
-#endif /* defined(__ChernoCraft__block__) */
+class Block {
+private:
+    unsigned int ID;
+    VertexArray *vao;
+    Shader *shader;
+    glm::vec3 color;
+public:
+    Block(unsigned int ID);
+    void update();
+    void render(glm::vec3 position);
+};

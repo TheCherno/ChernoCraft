@@ -3,6 +3,7 @@
 #include "graphics/screen.h"
 #include "input.h"
 #include "level/level.h"
+#include "utils/fileutils.h"
 
 class Game {
 private:
