@@ -7,7 +7,7 @@
 
 class FileUtils {
 public:
-    std::string read_file(const char *filename) {
+    static std::string read_file(const char *filename) {
         std::string result;
         std::ifstream stream(filename, std::ios::in);
         if (!stream.good()) {
@@ -22,9 +22,9 @@ public:
             std::getline(stream, line);
             result += line + "\n";
         }
-#ifdef DEBUG
-        std::cout << "Loaded file: '" << filename << "'" << std::endl;
-#endif
+        #ifdef DEBUG
+            std::cout << "Loaded file: '" << filename << "'" << std::endl;
+        #endif
         stream.close();
         return result;
     }

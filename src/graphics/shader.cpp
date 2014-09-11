@@ -1,9 +1,8 @@
 #include "shader.h"
 
 Shader::Shader(const char *vertex, const char *fragment) {
-    FileUtils f;
-    std::string vsrc = f.read_file(vertex);
-    std::string fsrc = f.read_file(fragment);
+    std::string vsrc = FileUtils::read_file(vertex);
+    std::string fsrc = FileUtils::read_file(fragment);
     const char *vs = vsrc.c_str();
     const char *fs = fsrc.c_str();
     shader = load(vs, fs);
