@@ -2,7 +2,7 @@
 
 Game::Game(const char *title, int width, int height) :
     screen(Screen(title, width, height)) {
-        
+    level = new Level();
 }
 
 bool Game::is_running() {
@@ -11,10 +11,11 @@ bool Game::is_running() {
 
 void Game::update() {
     input.update();
+    level->update();
 }
 
 void Game::render() {
     screen.clear();
+    level->render();
     screen.update();
 }
-
