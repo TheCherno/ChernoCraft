@@ -23,11 +23,12 @@ void Screen::initGL() {
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
     
     SDL_GL_CreateContext(window);
+    SDL_ShowCursor(SDL_DISABLE);
     
     std::cout << "OpenGL " << glGetString(GL_VERSION) << std::endl;
     
     glEnable(GL_DEPTH_TEST);
-    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+   // glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     
     Shader::LOAD();
 }
@@ -41,6 +42,7 @@ void Screen::update() {
     while ((error = glGetError()) != GL_NO_ERROR) {
         std::cerr << error << std::endl;
     }
+    SDL_WarpMouseInWindow(window, width / 2, height / 2);
     SDL_GL_SwapWindow(window);
 }
 

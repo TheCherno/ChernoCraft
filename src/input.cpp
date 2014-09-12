@@ -7,6 +7,8 @@ Input::Input() {
 }
 
 bool Input::keys[65536];
+int Input::mx;
+int Input::my;
 
 void Input::update() {
     while (SDL_PollEvent(&event)) {

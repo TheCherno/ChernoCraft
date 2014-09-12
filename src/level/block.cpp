@@ -23,12 +23,9 @@ Block::Block(unsigned int ID) {
         0, 1, 5, 5, 4, 0,
         1, 5, 6, 6, 2, 1
     };
-    srand(time(NULL));
+    srand((unsigned int) time(NULL));
     vao = new VertexArray(vertices, indices, 8 * 3, 6 * 6);
-    float r = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-    float g = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-    float b = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-    color = glm::vec3(r, g, b);
+    color = glm::vec3(0.3, 0.6, 0.2);
     shader = Shader::BLOCK;
 }
 

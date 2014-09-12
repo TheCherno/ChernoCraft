@@ -5,11 +5,11 @@
 	<key>BuildLocationStyle</key>
 	<string>CustomLocation</string>
 	<key>CustomBuildIntermediatesPath</key>
-	<string>/Users/yanchernikov/Dropbox/Swinburne/2014/Semester 2/Games Programming/ChernoCraft/Build/Intermediates</string>
+	<string>Build/Intermediates</string>
 	<key>CustomBuildLocationType</key>
-	<string>Absolute</string>
+	<string>RelativeToWorkspace</string>
 	<key>CustomBuildProductsPath</key>
-	<string>/Users/yanchernikov/Dropbox/Swinburne/2014/Semester 2/Games Programming/ChernoCraft/Build</string>
+	<string>Build/Products</string>
 	<key>DerivedDataLocationStyle</key>
 	<string>Default</string>
 	<key>IssueFilterStyle</key>
