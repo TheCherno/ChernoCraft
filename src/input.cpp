@@ -22,6 +22,7 @@ void Input::update() {
                 break;
         }
     }
+    SDL_GetMouseState(&mx, &my);
 }
 
 bool Input::key_pressed(SDL_Scancode key) {
@@ -34,6 +35,14 @@ std::vector<int> Input::get_pressed_keys() {
         if (keys[i]) result.push_back(i);
     }
     return result;
+}
+
+int Input::get_DX() {
+    return 1280 / 2 - mx;
+}
+
+int Input::get_DY() {
+    return 720 / 2 - my;
 }
 
 bool Input::window_closed() {
