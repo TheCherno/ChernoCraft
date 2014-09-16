@@ -8,6 +8,7 @@
 class Block {
 public:
     static Block *air, *dirt, *stone;
+    const static float SIZE;
 protected:
     unsigned short ID;
     static VertexArray *vao;

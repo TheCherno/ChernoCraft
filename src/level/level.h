@@ -19,11 +19,14 @@ private:
     
     const int WIDTH = 16;
     const int DEPTH = 16;
-    const int HEIGHT = 2;
+    const int HEIGHT = 16;
+    unsigned short NULL_BLOCK = 0;
 public:
     Level();
     ~Level();
     void add(Entity *entity);
     void update();
+    unsigned short& get_intersecting_block(Entity *entity);
+    unsigned short& get_block(glm::vec3 position);
     void render();
 };

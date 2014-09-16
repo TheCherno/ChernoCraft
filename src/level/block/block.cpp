@@ -4,8 +4,9 @@
 #include "dirt_block.h"
 #include "stone_block.h"
 
+const float Block::SIZE = 8.0f;
 Block* Block::air = (Block*) NULL;
-Block* Block::stone = (Block*) NULL;;
+Block* Block::stone = (Block*) NULL;
 Block* Block::dirt = (Block*) NULL;
 VertexArray* Block::vao = (VertexArray*) NULL;
 
@@ -29,16 +30,15 @@ void Block::CREATE_ALL() {
 }
 
 void Block::init() {
-    const float SIZE = 16.0f;
     GLfloat vertices[8 * 3] = {
-        -SIZE, -SIZE,  SIZE,
-         SIZE, -SIZE,  SIZE,
-         SIZE,  SIZE,  SIZE,
-        -SIZE,  SIZE,  SIZE,
-        -SIZE, -SIZE, -SIZE,
-         SIZE, -SIZE, -SIZE,
-         SIZE,  SIZE, -SIZE,
-        -SIZE,  SIZE, -SIZE
+        -SIZE / 2.0f, -SIZE / 2.0f,  SIZE / 2.0f,
+         SIZE / 2.0f, -SIZE / 2.0f,  SIZE / 2.0f,
+         SIZE / 2.0f,  SIZE / 2.0f,  SIZE / 2.0f,
+        -SIZE / 2.0f,  SIZE / 2.0f,  SIZE / 2.0f,
+        -SIZE / 2.0f, -SIZE / 2.0f, -SIZE / 2.0f,
+         SIZE / 2.0f, -SIZE / 2.0f, -SIZE / 2.0f,
+         SIZE / 2.0f,  SIZE / 2.0f, -SIZE / 2.0f,
+        -SIZE / 2.0f,  SIZE / 2.0f, -SIZE / 2.0f
     };
     
     GLuint indices [6 * 6] = {
@@ -46,7 +46,7 @@ void Block::init() {
         3, 2, 6, 6, 7, 3,
         7, 6, 5, 5, 4, 7,
         4, 0, 3, 3, 7, 4,
-        0, 1, 5, 5, 4, 0,
+        0, 5, 1, 5, 0, 4, // Bottom
         1, 5, 6, 6, 2, 1
     };
     vao = new VertexArray(vertices, indices, 8 * 3, 6 * 6);

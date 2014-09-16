@@ -29,6 +29,7 @@ void Screen::initGL() {
     std::cout << "OpenGL " << glGetString(GL_VERSION) << std::endl;
     
     glEnable(GL_DEPTH_TEST);
+    glEnable(GL_CULL_FACE);
    // glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     
     Shader::LOAD();

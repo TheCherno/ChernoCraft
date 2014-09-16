@@ -10,6 +10,7 @@
 class Shader {
 public:
     static Shader *BLOCK;
+    static glm::mat4 pr_matrix;
 private:
     GLuint shader;
     GLuint load(const char *vs, const char *fs);
