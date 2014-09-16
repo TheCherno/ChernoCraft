@@ -5,6 +5,10 @@ Game::Game(const char *title, int width, int height) :
     level = new Level();
 }
 
+Game::~Game() {
+    delete level;
+}
+
 bool Game::is_running() {
     return !input.window_closed();
 }

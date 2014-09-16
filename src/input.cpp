@@ -9,6 +9,8 @@ Input::Input() {
 bool Input::keys[65536];
 int Input::mx;
 int Input::my;
+int Input::mb;
+bool Input::mg = false;
 
 void Input::update() {
     while (SDL_PollEvent(&event)) {
@@ -22,13 +24,36 @@ void Input::update() {
             case SDL_KEYUP:
                 keys[event.key.keysym.scancode] = false;
                 break;
+            case SDL_MOUSEBUTTONDOWN:
+                mb = event.button.button;
+                break;
+            case SDL_MOUSEBUTTONUP:
+                mb = 0;
+                break;
         }
     }
     SDL_GetMouseState(&mx, &my);
+    
+    if (key_pressed(SDL_SCANCODE_ESCAPE)) {
+        mg = false;
+        SDL_ShowCursor(SDL_ENABLE);
+    }
+    if (!mg && Input::get_mouse_button() == SDL_BUTTON_LEFT) {
+        mg = true;
+        SDL_ShowCursor(SDL_DISABLE);
+    }
 }
 
 bool Input::key_pressed(SDL_Scancode key) {
     return keys[key];
+}
+
+int Input::get_mouse_button() {
+    return mb;
+}
+
+bool Input::mouse_grabbed() {
+    return mg;
 }
 
 std::vector<int> Input::get_pressed_keys() {

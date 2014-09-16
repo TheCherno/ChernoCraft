@@ -14,6 +14,7 @@ Screen::Screen(const char *title, int width, int height) {
 
 Screen::~Screen() {
     SDL_DestroyWindow(window);
+    Shader::DESTROY();
 }
 
 void Screen::initGL() {
@@ -42,7 +43,7 @@ void Screen::update() {
     while ((error = glGetError()) != GL_NO_ERROR) {
         std::cerr << error << std::endl;
     }
-    SDL_WarpMouseInWindow(window, width / 2, height / 2);
+    if (Input::mouse_grabbed()) SDL_WarpMouseInWindow(window, width / 2, height / 2);
     SDL_GL_SwapWindow(window);
 }
 

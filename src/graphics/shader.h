@@ -17,6 +17,7 @@ public:
     Shader(const char *vertex, const char *fragment);
     Shader(std::string vertex_source, std::string fragment_source, std::string name);
     static void LOAD();
+    static void DESTROY();
     GLint get_uniform(const char *name);
     void set_uniform_matrix(const char *name, glm::mat4 matrix);
     void set_uniform_int(const char *name, GLuint data);

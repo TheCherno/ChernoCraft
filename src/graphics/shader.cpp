@@ -16,6 +16,10 @@ Shader::Shader(std::string vertex_source, std::string fragment_source, std::stri
     shader = load(vs, fs);
 }
 
+void Shader::DESTROY() {
+    delete BLOCK;
+}
+
 void Shader::LOAD() {
     BLOCK = new Shader("shaders/shader.vert", "shaders/shader.frag");
     BLOCK->enable();

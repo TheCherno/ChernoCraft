@@ -11,6 +11,10 @@
 		82AF5BBE19C2884D000C1545 /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82AF5BBC19C2884D000C1545 /* player.cpp */; };
 		82AF5BC219C29FF2000C1545 /* shader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 82AF5BC019C29FE5000C1545 /* shader.frag */; };
 		82AF5BC319C29FF2000C1545 /* shader.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 82AF5BC119C29FE5000C1545 /* shader.vert */; };
+		82CA18C719C8084F003392DA /* block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82CA18C519C8084F003392DA /* block.cpp */; };
+		82CA18CA19C80878003392DA /* air_block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82CA18C819C80878003392DA /* air_block.cpp */; };
+		82CA18D519C80B8D003392DA /* dirt_block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82CA18D119C80B8D003392DA /* dirt_block.cpp */; };
+		82CA18D619C80B8D003392DA /* stone_block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82CA18D319C80B8D003392DA /* stone_block.cpp */; };
 		82EDA3B219C152A000AADFC8 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82EDA3B119C152A000AADFC8 /* main.cpp */; };
 		82EDA3B419C1555800AADFC8 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82EDA3B319C1555800AADFC8 /* OpenGL.framework */; };
 		82EDA3B719C1557A00AADFC8 /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82EDA3B519C1557A00AADFC8 /* SDL2_image.framework */; };
@@ -22,7 +26,6 @@
 		82EDA3C819C15A8B00AADFC8 /* texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82EDA3C519C15A8B00AADFC8 /* texture.cpp */; };
 		82EDA3CF19C15DFA00AADFC8 /* level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82EDA3CD19C15DFA00AADFC8 /* level.cpp */; };
 		82EDA3D219C15EA700AADFC8 /* vertexarray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82EDA3D019C15EA700AADFC8 /* vertexarray.cpp */; };
-		82EDA3DB19C16ED000AADFC8 /* block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82EDA3D919C16ED000AADFC8 /* block.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,6 +49,14 @@
 		82AF5BBD19C2884D000C1545 /* player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = player.h; sourceTree = "<group>"; };
 		82AF5BC019C29FE5000C1545 /* shader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader.frag; sourceTree = "<group>"; };
 		82AF5BC119C29FE5000C1545 /* shader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader.vert; sourceTree = "<group>"; };
+		82CA18C519C8084F003392DA /* block.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = block.cpp; sourceTree = "<group>"; };
+		82CA18C619C8084F003392DA /* block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = block.h; sourceTree = "<group>"; };
+		82CA18C819C80878003392DA /* air_block.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = air_block.cpp; sourceTree = "<group>"; };
+		82CA18C919C80878003392DA /* air_block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = air_block.h; sourceTree = "<group>"; };
+		82CA18D119C80B8D003392DA /* dirt_block.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dirt_block.cpp; sourceTree = "<group>"; };
+		82CA18D219C80B8D003392DA /* dirt_block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dirt_block.h; sourceTree = "<group>"; };
+		82CA18D319C80B8D003392DA /* stone_block.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stone_block.cpp; sourceTree = "<group>"; };
+		82CA18D419C80B8D003392DA /* stone_block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stone_block.h; sourceTree = "<group>"; };
 		82EDA3A619C151E400AADFC8 /* ChernoCraft */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ChernoCraft; sourceTree = BUILT_PRODUCTS_DIR; };
 		82EDA3B119C152A000AADFC8 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		82EDA3B319C1555800AADFC8 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -67,8 +78,6 @@
 		82EDA3CE19C15DFA00AADFC8 /* level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = level.h; sourceTree = "<group>"; };
 		82EDA3D019C15EA700AADFC8 /* vertexarray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vertexarray.cpp; sourceTree = "<group>"; };
 		82EDA3D119C15EA700AADFC8 /* vertexarray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vertexarray.h; sourceTree = "<group>"; };
-		82EDA3D919C16ED000AADFC8 /* block.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = block.cpp; sourceTree = "<group>"; };
-		82EDA3DA19C16ED000AADFC8 /* block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = block.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +112,21 @@
 				82AF5BC119C29FE5000C1545 /* shader.vert */,
 			);
 			path = shaders;
+			sourceTree = "<group>";
+		};
+		82CA18C419C8084F003392DA /* block */ = {
+			isa = PBXGroup;
+			children = (
+				82CA18D119C80B8D003392DA /* dirt_block.cpp */,
+				82CA18D219C80B8D003392DA /* dirt_block.h */,
+				82CA18D319C80B8D003392DA /* stone_block.cpp */,
+				82CA18D419C80B8D003392DA /* stone_block.h */,
+				82CA18C819C80878003392DA /* air_block.cpp */,
+				82CA18C919C80878003392DA /* air_block.h */,
+				82CA18C519C8084F003392DA /* block.cpp */,
+				82CA18C619C8084F003392DA /* block.h */,
+			);
+			path = block;
 			sourceTree = "<group>";
 		};
 		82EDA39D19C151E400AADFC8 = {
@@ -168,10 +192,9 @@
 		82EDA3CC19C15DFA00AADFC8 /* level */ = {
 			isa = PBXGroup;
 			children = (
+				82CA18C419C8084F003392DA /* block */,
 				82EDA3CD19C15DFA00AADFC8 /* level.cpp */,
 				82EDA3CE19C15DFA00AADFC8 /* level.h */,
-				82EDA3D919C16ED000AADFC8 /* block.cpp */,
-				82EDA3DA19C16ED000AADFC8 /* block.h */,
 			);
 			path = level;
 			sourceTree = "<group>";
@@ -235,14 +258,17 @@
 				82AF5BBB19C287CE000C1545 /* entity.cpp in Sources */,
 				82EDA3CF19C15DFA00AADFC8 /* level.cpp in Sources */,
 				82EDA3C719C15A8B00AADFC8 /* shader.cpp in Sources */,
-				82EDA3DB19C16ED000AADFC8 /* block.cpp in Sources */,
 				82AF5BBE19C2884D000C1545 /* player.cpp in Sources */,
 				82EDA3B219C152A000AADFC8 /* main.cpp in Sources */,
 				82EDA3BF19C1561C00AADFC8 /* screen.cpp in Sources */,
 				82EDA3C819C15A8B00AADFC8 /* texture.cpp in Sources */,
+				82CA18C719C8084F003392DA /* block.cpp in Sources */,
+				82CA18CA19C80878003392DA /* air_block.cpp in Sources */,
 				82EDA3D219C15EA700AADFC8 /* vertexarray.cpp in Sources */,
 				82EDA3C219C1586E00AADFC8 /* input.cpp in Sources */,
+				82CA18D519C80B8D003392DA /* dirt_block.cpp in Sources */,
 				82EDA3BB19C1559200AADFC8 /* game.cpp in Sources */,
+				82CA18D619C80B8D003392DA /* stone_block.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +361,7 @@
 					"/Applications/Xcode6-Beta7.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
 					/usr/local/include,
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -351,6 +378,7 @@
 					"/Applications/Xcode6-Beta7.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
 					/usr/local/include,
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

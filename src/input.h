@@ -9,7 +9,8 @@ private:
     SDL_Event event;
     static bool keys[65536];
     bool quit = false;
-    static int mx, my;
+    static int mx, my, mb;
+    static bool mg;
 public:
     Input();
     void update();
@@ -17,5 +18,7 @@ public:
     static bool key_pressed(SDL_Scancode key);
     static int get_DX();
     static int get_DY();
+    static int get_mouse_button();
+    static bool mouse_grabbed();
     bool window_closed();
 };

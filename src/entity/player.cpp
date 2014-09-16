@@ -23,9 +23,6 @@ void Player::update() {
         position.x -= sin(Math::to_radians(rotation.y + 90.0f));
         position.z += cos(Math::to_radians(rotation.y + 90.0f));
     }
-    rotation.x -= Input::get_DY() * mouse_sensitivity;
-    rotation.y -= Input::get_DX() * mouse_sensitivity;
-    
     position.y -= dy;
     if (position.y > -48.0f) position.y = -48.0f;
     if (jumping) {
@@ -42,6 +39,10 @@ void Player::update() {
         light = true;
     } else if (Input::key_pressed(SDL_SCANCODE_G)) {
         light = false;
+    }
+    if (Input::mouse_grabbed()) {
+        rotation.x -= Input::get_DY() * mouse_sensitivity;
+        rotation.y -= Input::get_DX() * mouse_sensitivity;
     }
     if (rotation.x < -90.0f) rotation.x = -90.0f;
     if (rotation.x >  90.0f) rotation.x =  90.0f;

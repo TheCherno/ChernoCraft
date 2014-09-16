@@ -13,11 +13,16 @@
 class Level {
 private:
     VertexArray *floor;
-    Block *block;
+    unsigned short ***blocks;
     glm::mat4 floor_pos, floor_rot;
     std::vector<Entity*> entities;
+    
+    const int WIDTH = 16;
+    const int DEPTH = 16;
+    const int HEIGHT = 2;
 public:
     Level();
+    ~Level();
     void add(Entity *entity);
     void update();
     void render();
