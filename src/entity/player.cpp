@@ -26,6 +26,23 @@ void Player::update() {
     rotation.x -= Input::get_DY() * mouse_sensitivity;
     rotation.y -= Input::get_DX() * mouse_sensitivity;
     
+    position.y -= dy;
+    if (position.y > -48.0f) position.y = -48.0f;
+    if (jumping) {
+        dy += 0.8f;
+    }
+    if (dy > JUMP_HEIGHT) {
+        jumping = false;
+    }
+    if (!jumping && dy > -JUMP_HEIGHT) dy -= 0.2f;
+    if (Input::key_pressed(SDL_SCANCODE_SPACE) && !jumping && position.y == -48.0f) {
+        jumping = true;
+    }
+    if (Input::key_pressed(SDL_SCANCODE_F)) {
+        light = true;
+    } else if (Input::key_pressed(SDL_SCANCODE_G)) {
+        light = false;
+    }
     if (rotation.x < -90.0f) rotation.x = -90.0f;
     if (rotation.x >  90.0f) rotation.x =  90.0f;
 }
@@ -37,5 +54,7 @@ void Player::render() {
     vw_matrix *= glm::translate(glm::mat4(1.0f), position);
     shader->set_uniform_matrix("vw_matrix", vw_matrix);
     shader->set_uniform_float3("player_pos", -position);
+    if (light) shader->set_uniform_float1("light_on", 1);
+    else shader->set_uniform_float1("light_on", 0);
     shader->disable();
 }
