@@ -51,9 +51,10 @@ void Player::update() {
     unsigned short& id = level->get_intersecting_block(this);
     if (id != 0) id = 0;
     
-    unsigned short& rid = level->raycast_block(position, rotation);
-    std::cout << "Block ID: " << rid << std::endl;
-    if (rid != 0) rid = 0;
+    if (Input::mouse_clicked(SDL_BUTTON_LEFT)) {
+        unsigned short& rid = level->raycast_block(position, rotation);
+        if (rid != 0) rid = 0;
+    }
 }
 
 void Player::render() {
