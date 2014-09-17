@@ -7,6 +7,8 @@ Input::Input() {
 }
 
 bool Input::keys[65536];
+std::vector<SDL_Scancode> Input::pressed_keys;
+std::vector<unsigned int> Input::clicked_buttons;
 int Input::mx;
 int Input::my;
 int Input::mb;
@@ -23,12 +25,18 @@ void Input::update() {
                 break;
             case SDL_KEYUP:
                 keys[event.key.keysym.scancode] = false;
+                if (!pressed_keys.empty() && std::find(pressed_keys.begin(), pressed_keys.end(), event.key.keysym.scancode) != pressed_keys.end()) {
+                    pressed_keys.erase(std::find(pressed_keys.begin(), pressed_keys.end(), event.key.keysym.scancode));
+                }
                 break;
             case SDL_MOUSEBUTTONDOWN:
                 mb = event.button.button;
                 break;
             case SDL_MOUSEBUTTONUP:
                 mb = 0;
+                if (!clicked_buttons.empty() && std::find(clicked_buttons.begin(), clicked_buttons.end(), event.button.button) != clicked_buttons.end()) {
+                    clicked_buttons.erase(std::find(clicked_buttons.begin(), clicked_buttons.end(), event.button.button));
+                }
                 break;
         }
     }
@@ -47,6 +55,25 @@ void Input::update() {
 bool Input::key_pressed(SDL_Scancode key) {
     return keys[key];
 }
+
+bool Input::key_typed(SDL_Scancode key) {
+    bool pressed = key_pressed(key);
+    if (!pressed) return false;
+    if(!pressed_keys.empty() && std::find(pressed_keys.begin(), pressed_keys.end(), key) != pressed_keys.end()) {
+        return false;
+    }
+    pressed_keys.push_back(key);
+    return true;
+}
+
+bool Input::mouse_clicked(unsigned int button) {
+    bool clicked = mb == button;
+    if (!clicked) return false;
+    if(!clicked_buttons.empty() && std::find(clicked_buttons.begin(), clicked_buttons.end(), button) != clicked_buttons.end()) {
+        return false;
+    }
+    clicked_buttons.push_back(button);
+    return true;}
 
 int Input::get_mouse_button() {
     return mb;
