@@ -54,8 +54,8 @@ unsigned short& Level::get_block(glm::vec3 position) {
 
 unsigned short& Level::raycast_block(glm::vec3 position, glm::vec3 &rotation) {
     position = -position;
-    glm::vec3 ray_vector = glm::vec3(cos(Math::to_radians(rotation.y - 90.0f)), -sin(Math::to_radians(rotation.x)), sin(Math::to_radians(rotation.y - 90.0f)));
-    const float MAX_DISTANCE = 200.0f;
+    glm::vec3 ray_vector = glm::vec3(cos(Math::to_radians(rotation.y - 90.0f)), -tan(Math::to_radians(rotation.x)), sin(Math::to_radians(rotation.y - 90.0f)));
+    const float MAX_DISTANCE = 64.0f;
     const float ITERATION = 0.5f;
     float distance = 0.0f;
     while (distance < MAX_DISTANCE) {
