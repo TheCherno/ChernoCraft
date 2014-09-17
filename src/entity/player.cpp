@@ -5,6 +5,20 @@ Player::Player(glm::vec3 position) {
     this->position = position;
     this->position.y = -this->position.y;
     shader = Shader::BLOCK;
+    
+    const GLfloat TSIZE = 0.2f;
+    GLfloat vertices[4 * 3] = {
+        -TSIZE / 2.0f, -TSIZE / 2.0f, 0.0f,
+        -TSIZE / 2.0f,  TSIZE / 2.0f, 0.0f,
+         TSIZE / 2.0f,  TSIZE / 2.0f, 0.0f,
+         TSIZE / 2.0f, -TSIZE / 2.0f, 0.0f
+    };
+    GLuint indices[6] = {
+        0, 1, 2,
+        2, 3, 0
+    };
+    
+    target = new VertexArray(vertices, indices, 4 * 3, 6);
 }
 
 void Player::update() {
@@ -48,9 +62,6 @@ void Player::update() {
     if (rotation.x < -90.0f) rotation.x = -90.0f;
     if (rotation.x >  90.0f) rotation.x =  90.0f;
     
-    unsigned short& id = level->get_intersecting_block(this);
-    if (id != 0) id = 0;
-    
     if (Input::mouse_clicked(SDL_BUTTON_LEFT)) {
         unsigned short& rid = level->raycast_block(position, rotation);
         if (rid != 0) rid = 0;
@@ -67,4 +78,7 @@ void Player::render() {
     if (light) shader->set_uniform_float1("light_on", 1);
     else shader->set_uniform_float1("light_on", 0);
     shader->disable();
+    Shader::HUD->enable();
+    target->render();
+    Shader::HUD->disable();
 }

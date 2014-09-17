@@ -1,6 +1,7 @@
 #include "shader.h"
 
 Shader* Shader::BLOCK;
+Shader* Shader::HUD;
 glm::mat4 Shader::pr_matrix;
 
 Shader::Shader(const char *vertex, const char *fragment) {
@@ -28,6 +29,12 @@ void Shader::LOAD() {
     BLOCK->set_uniform_matrix("pr_matrix", pr_matrix);
     BLOCK->set_uniform_matrix("vw_matrix", glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -500.0f)));
     BLOCK->disable();
+    
+    glm::mat4 ortho = glm::ortho(-16.0f * 2.0f, 16.0f * 2.0f, 9.0f * 2.0f, -9.0f * 2.0f, -1.0f, 1.0f);
+    HUD = new Shader("shaders/hud.vert", "shaders/hud.frag");
+    HUD->enable();
+    HUD->set_uniform_matrix("pr_matrix", ortho);
+    HUD->disable();
 }
 
 GLuint Shader::load(const char *vs, const char *fs) {

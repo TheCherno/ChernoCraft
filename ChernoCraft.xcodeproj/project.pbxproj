@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8220334C19C96F0300E09A89 /* hud.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8220334A19C96C7600E09A89 /* hud.frag */; };
+		8220334D19C96F0300E09A89 /* hud.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8220334B19C96C7F00E09A89 /* hud.vert */; };
 		82AF5BBB19C287CE000C1545 /* entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82AF5BB919C287CE000C1545 /* entity.cpp */; };
 		82AF5BBE19C2884D000C1545 /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82AF5BBC19C2884D000C1545 /* player.cpp */; };
 		82AF5BC219C29FF2000C1545 /* shader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 82AF5BC019C29FE5000C1545 /* shader.frag */; };
@@ -35,6 +37,8 @@
 			dstPath = shaders;
 			dstSubfolderSpec = 16;
 			files = (
+				8220334C19C96F0300E09A89 /* hud.frag in CopyFiles */,
+				8220334D19C96F0300E09A89 /* hud.vert in CopyFiles */,
 				82AF5BC219C29FF2000C1545 /* shader.frag in CopyFiles */,
 				82AF5BC319C29FF2000C1545 /* shader.vert in CopyFiles */,
 			);
@@ -43,6 +47,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8220334A19C96C7600E09A89 /* hud.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = hud.frag; sourceTree = "<group>"; };
+		8220334B19C96C7F00E09A89 /* hud.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = hud.vert; sourceTree = "<group>"; };
 		82AF5BB919C287CE000C1545 /* entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = entity.cpp; sourceTree = "<group>"; };
 		82AF5BBA19C287CE000C1545 /* entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = entity.h; sourceTree = "<group>"; };
 		82AF5BBC19C2884D000C1545 /* player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = player.cpp; sourceTree = "<group>"; };
@@ -110,6 +116,8 @@
 			children = (
 				82AF5BC019C29FE5000C1545 /* shader.frag */,
 				82AF5BC119C29FE5000C1545 /* shader.vert */,
+				8220334A19C96C7600E09A89 /* hud.frag */,
+				8220334B19C96C7F00E09A89 /* hud.vert */,
 			);
 			path = shaders;
 			sourceTree = "<group>";

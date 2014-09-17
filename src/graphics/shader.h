@@ -9,7 +9,7 @@
 
 class Shader {
 public:
-    static Shader *BLOCK;
+    static Shader *BLOCK, *HUD;
     static glm::mat4 pr_matrix;
 private:
     GLuint shader;

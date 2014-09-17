@@ -14,8 +14,10 @@ in DATA {
 void main() {
     //color = vec4(0.2, 0.3, 0.8, 1.0);
     float intensity = 2.0 / length(player_pos - fs_in.position);
-    vec3 bc = block_color * fs_in.position / 40.0f;
-    bc *= intensity * 20.0 - 0.2;
+    vec3 bc = block_color * fs_in.position / 60.0f;
+    float i = intensity * 20.0 - 0.2;
+    if (i > 1.8) i = 1.8;
+    bc *= i;
     if (light_on == 0.0) bc *= 0.1;
     color = vec4(bc, 1.0);
 }

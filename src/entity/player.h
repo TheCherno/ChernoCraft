@@ -11,6 +11,7 @@ private:
     const float JUMP_HEIGHT = 3.0f;
     bool jumping = false;
     bool light = true;
+    VertexArray *target;
 public:
     Player(glm::vec3 spawn);
     void update();
