@@ -3,7 +3,7 @@
 #include <vector>
 #include <OpenGL/gl3.h>
 
-#include "block.h"
+#include "block/block.h"
 #include "../graphics/vertexarray.h"
 #include "../graphics/shader.h"
 #include "../entity/entity.h"
@@ -28,5 +28,6 @@ public:
     void update();
     unsigned short& get_intersecting_block(Entity *entity);
     unsigned short& get_block(glm::vec3 position);
+    unsigned short& raycast_block(glm::vec3 position, glm::vec3 &rotation);
     void render();
 };

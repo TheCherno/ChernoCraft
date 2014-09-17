@@ -46,7 +46,24 @@ unsigned short& Level::get_intersecting_block(Entity *entity) {
 }
 
 unsigned short& Level::get_block(glm::vec3 position) {
-    std::cout << position.x << ", " << position.y << ", " << position.z << std::endl;
+    position /= Block::SIZE;
+    if (position.x < 0 || position.y < 0 || position.z < 0) return NULL_BLOCK;
+    if (position.x >= WIDTH || position.y >= HEIGHT || position.z >= DEPTH) return NULL_BLOCK;
+    return blocks[(short) position.x][(short) position.z][(short) position.y];
+}
+
+unsigned short& Level::raycast_block(glm::vec3 position, glm::vec3 &rotation) {
+    position = -position;
+    glm::vec3 ray_vector = glm::vec3(cos(Math::to_radians(rotation.y - 90.0f)), -sin(Math::to_radians(rotation.x)), sin(Math::to_radians(rotation.y - 90.0f)));
+    const float MAX_DISTANCE = 200.0f;
+    const float ITERATION = 0.5f;
+    float distance = 0.0f;
+    while (distance < MAX_DISTANCE) {
+        position += ray_vector * ITERATION;
+        unsigned short &result = get_block(position);
+        if (result != NULL_BLOCK) return result;
+        distance += ITERATION;
+    }
     return NULL_BLOCK;
 }
 

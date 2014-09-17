@@ -51,13 +51,9 @@ void Player::update() {
     unsigned short& id = level->get_intersecting_block(this);
     if (id != 0) id = 0;
     
-//    glm::vec4 ray_clip = glm::vec4(Input::get_DX(), 0.0f, 1.0f, 1.0f);
-//    glm::vec4 ray_eye = glm::inverse(Shader::pr_matsrix) * ray_clip;
-//    ray_eye = glm::vec4(ray_eye.x, ray_eye.y, 1.0f, 0.0f);
-//    std::cout << "Ray Eye:" << ray_eye.x << std::endl;
-//    
-//    glm::vec4 ray = glm::normalize(glm::inverse(Shader::pr_matrix) * ray_eye);
-//    level->get_block(glm::vec3(ray.x, ray.y, ray.z));
+    unsigned short& rid = level->raycast_block(position, rotation);
+    std::cout << "Block ID: " << rid << std::endl;
+    if (rid != 0) rid = 0;
 }
 
 void Player::render() {
