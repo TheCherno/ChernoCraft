@@ -62,8 +62,11 @@ void Player::update() {
     if (rotation.x < -90.0f) rotation.x = -90.0f;
     if (rotation.x >  90.0f) rotation.x =  90.0f;
     
+    glm::vec3 b = level->raycast_block(position, rotation);
+    level->select_block(b);
+    
     if (Input::mouse_clicked(SDL_BUTTON_LEFT)) {
-        unsigned short& rid = level->raycast_block(position, rotation);
+        unsigned short& rid = level->raycast_block_id(position, rotation);
         if (rid != 0) rid = 0;
     }
 }

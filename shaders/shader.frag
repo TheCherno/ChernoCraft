@@ -5,6 +5,7 @@ uniform vec3 block_color;
 
 uniform vec3 player_pos;
 uniform float light_on;
+uniform float selected;
 vec3 light = vec3(2.0, 7.0, 2.0);
 
 in DATA {
@@ -20,4 +21,5 @@ void main() {
     bc *= i;
     if (light_on == 0.0) bc *= 0.1;
     color = vec4(bc, 1.0);
+    if (selected == 1.0) color += 0.5;
 }

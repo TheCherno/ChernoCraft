@@ -27,15 +27,19 @@ Level::~Level() {
     delete [] blocks;
 }
 
+void Level::add(Entity *entity) {
+    entity->init(this);
+    entities.push_back(entity);
+}
+
 void Level::update() {
     for (int i = 0; i < entities.size(); i++) {
         entities[i]->update();
     }
 }
 
-void Level::add(Entity *entity) {
-    entity->init(this);
-    entities.push_back(entity);
+void Level::select_block(glm::vec3 block) {
+    this->selected_block = block;
 }
 
 unsigned short& Level::get_intersecting_block(Entity *entity) {
@@ -52,9 +56,25 @@ unsigned short& Level::get_block(glm::vec3 position) {
     return blocks[(short) position.x][(short) position.z][(short) position.y];
 }
 
-unsigned short& Level::raycast_block(glm::vec3 position, glm::vec3 &rotation) {
+glm::vec3 Level::raycast_block(glm::vec3 position, glm::vec3 &rotation) {
     position = -position;
     glm::vec3 ray_vector = glm::vec3(cos(Math::to_radians(rotation.y - 90.0f)), -tan(Math::to_radians(rotation.x)), sin(Math::to_radians(rotation.y - 90.0f)));
+    const float MAX_DISTANCE = 64.0f;
+    const float ITERATION = 0.5f;
+    float distance = 0.0f;
+    while (distance < MAX_DISTANCE) {
+        position += ray_vector * ITERATION;
+        unsigned short &result = get_block(position);
+        if (result != NULL_BLOCK) return glm::vec3((short) (position.x / Block::SIZE), (short) (position.z / Block::SIZE), (short) (position.y / Block::SIZE));
+        distance += ITERATION;
+    }
+    return NULL_COORD;
+}
+
+unsigned short& Level::raycast_block_id(glm::vec3 position, glm::vec3 &rotation) {
+    position = -position;
+    glm::vec3 ray_vector = glm::vec3(cos(Math::to_radians(rotation.y - 90.0f)), -tan(Math::to_radians(rotation.x)), sin(Math::to_radians(rotation.y - 90.0f)));
+    std::cout << ray_vector.y << std::endl;
     const float MAX_DISTANCE = 64.0f;
     const float ITERATION = 0.5f;
     float distance = 0.0f;
@@ -81,6 +101,14 @@ void Level::render() {
                         block = Block::dirt;
                         break;
                 }
+                Shader::BLOCK->enable();
+//                std::cout << z << ": " << selected_block.z << std::endl;
+                if (glm::vec3(x, y, z) == selected_block) {
+                    Shader::BLOCK->set_uniform_float1("selected", 1.0f);
+                } else {
+                    Shader::BLOCK->set_uniform_float1("selected", 0.0f);
+                }
+                Shader::BLOCK->disable();
                 block->render(glm::vec3(x * Block::SIZE + 2.0f, z * Block::SIZE + 2.0f, y * Block::SIZE + 2.0f));
             }
         }
