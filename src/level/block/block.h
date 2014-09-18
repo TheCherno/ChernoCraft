@@ -14,6 +14,7 @@ protected:
     static VertexArray *vao;
     Shader *shader;
     glm::vec3 color;
+    Texture *texture;
 public:
     Block(unsigned short ID);
     static void CREATE_ALL();

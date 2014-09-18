@@ -15,6 +15,7 @@ Screen::Screen(const char *title, int width, int height) {
 Screen::~Screen() {
     SDL_DestroyWindow(window);
     Shader::DESTROY();
+    Texture::DESTROY();
 }
 
 void Screen::initGL() {
@@ -33,6 +34,7 @@ void Screen::initGL() {
    // glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     
     Shader::LOAD();
+    Texture::LOAD();
 }
 
 void Screen::clear() {

@@ -6,6 +6,7 @@
 #include <OpenGL/gl3.h>
 
 #include "shader.h"
+#include "texture.h"
 #include "../input.h"
 
 class Screen {

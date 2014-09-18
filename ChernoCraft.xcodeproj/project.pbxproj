@@ -13,6 +13,7 @@
 		82AF5BBE19C2884D000C1545 /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82AF5BBC19C2884D000C1545 /* player.cpp */; };
 		82AF5BC219C29FF2000C1545 /* shader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 82AF5BC019C29FE5000C1545 /* shader.frag */; };
 		82AF5BC319C29FF2000C1545 /* shader.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 82AF5BC119C29FE5000C1545 /* shader.vert */; };
+		82C0EF3C19CB04A8009DA618 /* dirt.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 82C0EF3A19CB0478009DA618 /* dirt.png */; };
 		82CA18C719C8084F003392DA /* block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82CA18C519C8084F003392DA /* block.cpp */; };
 		82CA18CA19C80878003392DA /* air_block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82CA18C819C80878003392DA /* air_block.cpp */; };
 		82CA18D519C80B8D003392DA /* dirt_block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82CA18D119C80B8D003392DA /* dirt_block.cpp */; };
@@ -31,6 +32,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		82C0EF3B19CB049E009DA618 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = res;
+			dstSubfolderSpec = 16;
+			files = (
+				82C0EF3C19CB04A8009DA618 /* dirt.png in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		82EDA3A419C151E400AADFC8 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
@@ -55,6 +66,7 @@
 		82AF5BBD19C2884D000C1545 /* player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = player.h; sourceTree = "<group>"; };
 		82AF5BC019C29FE5000C1545 /* shader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader.frag; sourceTree = "<group>"; };
 		82AF5BC119C29FE5000C1545 /* shader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader.vert; sourceTree = "<group>"; };
+		82C0EF3A19CB0478009DA618 /* dirt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dirt.png; sourceTree = "<group>"; };
 		82CA18C519C8084F003392DA /* block.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = block.cpp; sourceTree = "<group>"; };
 		82CA18C619C8084F003392DA /* block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = block.h; sourceTree = "<group>"; };
 		82CA18C819C80878003392DA /* air_block.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = air_block.cpp; sourceTree = "<group>"; };
@@ -122,6 +134,14 @@
 			path = shaders;
 			sourceTree = "<group>";
 		};
+		82C0EF3919CB0478009DA618 /* res */ = {
+			isa = PBXGroup;
+			children = (
+				82C0EF3A19CB0478009DA618 /* dirt.png */,
+			);
+			path = res;
+			sourceTree = "<group>";
+		};
 		82CA18C419C8084F003392DA /* block */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +160,7 @@
 		82EDA39D19C151E400AADFC8 = {
 			isa = PBXGroup;
 			children = (
+				82C0EF3919CB0478009DA618 /* res */,
 				82AF5BBF19C29FE5000C1545 /* shaders */,
 				82EDA3B519C1557A00AADFC8 /* SDL2_image.framework */,
 				82EDA3B619C1557A00AADFC8 /* SDL2.framework */,
@@ -217,6 +238,7 @@
 				82EDA3A219C151E400AADFC8 /* Sources */,
 				82EDA3A319C151E400AADFC8 /* Frameworks */,
 				82EDA3A419C151E400AADFC8 /* CopyFiles */,
+				82C0EF3B19CB049E009DA618 /* CopyFiles */,
 			);
 			buildRules = (
 			);

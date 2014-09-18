@@ -50,6 +50,7 @@ void Block::init() {
         1, 5, 6, 6, 2, 1
     };
     vao = new VertexArray(vertices, indices, 8 * 3, 6 * 6);
+    texture = Texture::dirt;
 }
 
 void Block::update() {
@@ -57,9 +58,10 @@ void Block::update() {
 
 void Block::render(glm::vec3 position) {
     shader->enable();
+    texture->enable();
     glm::mat4 pos = glm::translate(glm::mat4(1.0f), position);
     shader->set_uniform_matrix("ml_matrix", pos);
-    shader->set_uniform_float3("block_color", color);
     vao->render();
+    texture->disable();
     shader->disable();
 }

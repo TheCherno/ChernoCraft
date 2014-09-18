@@ -28,6 +28,7 @@ void Shader::LOAD() {
     BLOCK->enable();
     BLOCK->set_uniform_matrix("pr_matrix", pr_matrix);
     BLOCK->set_uniform_matrix("vw_matrix", glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -500.0f)));
+    BLOCK->set_uniform_float1("tex_id", 0);
     BLOCK->disable();
     
     glm::mat4 ortho = glm::ortho(-16.0f * 2.0f, 16.0f * 2.0f, 9.0f * 2.0f, -9.0f * 2.0f, -1.0f, 1.0f);

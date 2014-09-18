@@ -1,11 +1,19 @@
 #include "texture.h"
 
+Texture* Texture::dirt = (Texture*) NULL;
+
 Texture::Texture(std::string file) {
     texture = load(file);
 }
 
 void Texture::LOAD() {
     // Load static textures here
+    glActiveTexture(GL_TEXTURE0);
+    dirt = new Texture("res/dirt.png");
+}
+
+void Texture::DESTROY() {
+    delete dirt;
 }
 
 GLuint Texture::load(std::string filepath) {
@@ -33,7 +41,6 @@ GLuint Texture::load(std::string filepath) {
 }
 
 void Texture::enable() {
-    glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, texture);
 }
 
