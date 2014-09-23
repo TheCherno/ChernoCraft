@@ -18,6 +18,7 @@ protected:
 public:
     Block(unsigned short ID);
     static void CREATE_ALL();
+    static void DESTROY();
     virtual void update();
     virtual void render(glm::vec3 position);
 private:

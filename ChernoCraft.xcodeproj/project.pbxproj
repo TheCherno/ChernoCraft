@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		821B340B19CFC4BA0019952D /* stone.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 821B340A19CFC4A30019952D /* stone.png */; };
 		8220334C19C96F0300E09A89 /* hud.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8220334A19C96C7600E09A89 /* hud.frag */; };
 		8220334D19C96F0300E09A89 /* hud.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8220334B19C96C7F00E09A89 /* hud.vert */; };
 		82AF5BBB19C287CE000C1545 /* entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82AF5BB919C287CE000C1545 /* entity.cpp */; };
@@ -38,6 +39,7 @@
 			dstPath = res;
 			dstSubfolderSpec = 16;
 			files = (
+				821B340B19CFC4BA0019952D /* stone.png in CopyFiles */,
 				82C0EF3C19CB04A8009DA618 /* dirt.png in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -58,6 +60,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		821B340A19CFC4A30019952D /* stone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stone.png; sourceTree = "<group>"; };
 		8220334A19C96C7600E09A89 /* hud.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = hud.frag; sourceTree = "<group>"; };
 		8220334B19C96C7F00E09A89 /* hud.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = hud.vert; sourceTree = "<group>"; };
 		82AF5BB919C287CE000C1545 /* entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = entity.cpp; sourceTree = "<group>"; };
@@ -137,6 +140,7 @@
 		82C0EF3919CB0478009DA618 /* res */ = {
 			isa = PBXGroup;
 			children = (
+				821B340A19CFC4A30019952D /* stone.png */,
 				82C0EF3A19CB0478009DA618 /* dirt.png */,
 			);
 			path = res;

@@ -1,6 +1,7 @@
 #include "texture.h"
 
 Texture* Texture::dirt = (Texture*) NULL;
+Texture* Texture::stone = (Texture*) NULL;
 
 Texture::Texture(std::string file) {
     texture = load(file);
@@ -10,10 +11,12 @@ void Texture::LOAD() {
     // Load static textures here
     glActiveTexture(GL_TEXTURE0);
     dirt = new Texture("res/dirt.png");
+    stone = new Texture("res/stone.png");
 }
 
 void Texture::DESTROY() {
     delete dirt;
+    delete stone;
 }
 
 GLuint Texture::load(std::string filepath) {

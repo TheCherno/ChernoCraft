@@ -1,7 +1,9 @@
 #include "level.h"
 
+unsigned short Level::NULL_BLOCK = 0;
+
 Level::Level() {
-    add(new Player(glm::vec3(0, 48.0f, 0)));
+    add(new Player(glm::vec3(-45.0f, 48.0f, -45.0f)));
     blocks = new unsigned short**[WIDTH];
     for (unsigned int x = 0; x < WIDTH; x++) {
         blocks[x] = new unsigned short*[DEPTH];
@@ -10,10 +12,23 @@ Level::Level() {
         }
     }
     
+    srand((unsigned int) time(NULL));
     for (unsigned int z = 0; z < HEIGHT; z++) {
         for (unsigned int y = 0; y < DEPTH; y++) {
             for (unsigned int x = 0; x < WIDTH; x++) {
-                blocks[x][y][z] = 1;
+                if (z < 1) {
+                    blocks[x][y][z] = 2;
+                } else if (z < 4 && rand() % 3 == 0) {
+                    blocks[x][y][z] = 3;
+                } else if (z < 4) {
+                    blocks[x][y][z] = 2;
+                } else if (z < 5) {
+                    blocks[x][y][z] = 3;
+                } else if (z < 10 && rand() % 30 == 0) {
+                    blocks[x][y][z] = 2;
+                } else {
+                    blocks[x][y][z] = 1;
+                }
             }
         }
     }
@@ -25,6 +40,7 @@ Level::~Level() {
         delete [] blocks[y];
     }
     delete [] blocks;
+    Block::DESTROY();
 }
 
 void Level::add(Entity *entity) {
@@ -59,13 +75,13 @@ unsigned short& Level::get_block(glm::vec3 position) {
 glm::vec3 Level::raycast_block(glm::vec3 position, glm::vec3 &rotation) {
     position = -position;
     glm::vec3 ray_vector = glm::vec3(cos(Math::to_radians(rotation.y - 90.0f)), -tan(Math::to_radians(rotation.x)), sin(Math::to_radians(rotation.y - 90.0f)));
-    const float MAX_DISTANCE = 64.0f;
+    const float MAX_DISTANCE = 32.0f;
     const float ITERATION = 0.5f;
     float distance = 0.0f;
     while (distance < MAX_DISTANCE) {
         position += ray_vector * ITERATION;
         unsigned short &result = get_block(position);
-        if (result != NULL_BLOCK) return glm::vec3((short) (position.x / Block::SIZE), (short) (position.z / Block::SIZE), (short) (position.y / Block::SIZE));
+        if (result != 1 && result != NULL_BLOCK) return glm::vec3((short) (position.x / Block::SIZE), (short) (position.z / Block::SIZE), (short) (position.y / Block::SIZE));
         distance += ITERATION;
     }
     return NULL_COORD;
@@ -74,14 +90,42 @@ glm::vec3 Level::raycast_block(glm::vec3 position, glm::vec3 &rotation) {
 unsigned short& Level::raycast_block_id(glm::vec3 position, glm::vec3 &rotation) {
     position = -position;
     glm::vec3 ray_vector = glm::vec3(cos(Math::to_radians(rotation.y - 90.0f)), -tan(Math::to_radians(rotation.x)), sin(Math::to_radians(rotation.y - 90.0f)));
-    std::cout << ray_vector.y << std::endl;
-    const float MAX_DISTANCE = 64.0f;
+    const float MAX_DISTANCE = 32.0f;
     const float ITERATION = 0.5f;
     float distance = 0.0f;
     while (distance < MAX_DISTANCE) {
         position += ray_vector * ITERATION;
         unsigned short &result = get_block(position);
-        if (result != NULL_BLOCK) return result;
+        if (result != 1 && result != NULL_BLOCK) return result;
+        distance += ITERATION;
+    }
+    return NULL_BLOCK;
+}
+
+unsigned short& Level::raycast_collision(glm::vec3 position, glm::vec3 rotation) {
+    position = -position;
+    const float MAX_DISTANCE = 2.0f;
+    const float ITERATION = 0.5f;
+    float distance = 0.0f;
+    while (distance < MAX_DISTANCE) {
+        position += rotation * ITERATION;
+        unsigned short &result = get_block(position);
+        if (result != 1 && result != NULL_BLOCK) return result;
+        distance += ITERATION;
+    }
+    return NULL_BLOCK;
+}
+
+unsigned short& Level::raycast_pre_block_id(glm::vec3 position, glm::vec3 &rotation) {
+    position = -position;
+    glm::vec3 ray_vector = glm::vec3(cos(Math::to_radians(rotation.y - 90.0f)), -tan(Math::to_radians(rotation.x)), sin(Math::to_radians(rotation.y - 90.0f)));
+    const float MAX_DISTANCE = 32.0f;
+    const float ITERATION = 0.5f;
+    float distance = 0.0f;
+    while (distance < MAX_DISTANCE) {
+        position += ray_vector * ITERATION;
+        unsigned short &result = get_block(position);
+        if (result != 1 && result != NULL_BLOCK) return get_block(position - ray_vector * ITERATION);
         distance += ITERATION;
     }
     return NULL_BLOCK;
@@ -94,10 +138,10 @@ void Level::render() {
             for (int x = 0; x < WIDTH; x++) {
                 Block *block = Block::air;
                 switch (blocks[x][y][z]) {
-                    case 1:
+                    case 2:
                         block = Block::stone;
                         break;
-                    case 2:
+                    case 3:
                         block = Block::dirt;
                         break;
                 }

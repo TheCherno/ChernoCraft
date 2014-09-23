@@ -10,7 +10,7 @@
 class Texture {
 public:
     // Static textures go here
-    static Texture *dirt;
+    static Texture *dirt, *stone;
 private:
     GLuint texture;
     GLuint load(std::string filepath);
