@@ -33,7 +33,9 @@ public:
     unsigned short& get_intersecting_block(Entity *entity);
     unsigned short& get_block(glm::vec3 position);
     unsigned short& raycast_collision(glm::vec3 position, glm::vec3 rotation);
+    unsigned short& pick_block(glm::vec3 position, glm::vec3 &rotation);
     unsigned short& raycast_block_id(glm::vec3 position, glm::vec3 &rotation);
+    unsigned short& raycast_block_id(glm::vec3 position, glm::vec3 &rotation, float distance);
     unsigned short& raycast_pre_block_id(glm::vec3 position, glm::vec3 &rotation);
     glm::vec3 raycast_block(glm::vec3 position, glm::vec3 &rotation);
     void render();

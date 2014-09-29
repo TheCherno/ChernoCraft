@@ -23,7 +23,7 @@ void Shader::DESTROY() {
 }
 
 void Shader::LOAD() {
-    pr_matrix = glm::perspective(65.0f, 16.0f / 9.0f, 0.1f, 1000.0f);
+    pr_matrix = glm::perspective(90.0f, 16.0f / 9.0f, 0.1f, 1000.0f);
     BLOCK = new Shader("shaders/shader.vert", "shaders/shader.frag");
     BLOCK->enable();
     BLOCK->set_uniform_matrix("pr_matrix", pr_matrix);
